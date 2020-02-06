@@ -8,9 +8,6 @@ class Graphics:
         pass
 
     def drawSquare(self, x, y, symbol, screen):
-        # rect = graphics.Rectangle(graphics.Point(x, y), graphics.Point(x+Graphics.squareSize,
-        # y+Graphics.squareSize)) #gamla graphics.py
-
         if symbol == "X":
             pygame.draw.rect(screen, (0, 0, 0), [x, y, self.squareSize, self.squareSize])
         elif symbol == "0":
@@ -21,7 +18,6 @@ class Graphics:
             pygame.draw.rect(screen, (255, 0, 0), [x, y, self.squareSize, self.squareSize])
         else:
             pass
-
 
 class Parser:
     def __init__(self):
@@ -43,21 +39,21 @@ class Parser:
 
         file.close()
 
-
 class GraphNode:
-    def __init__(self):
-        pass
+    def __init__(self, x, y, index):
+        self.x = x
+        self.y = y
+        self.index = index
 
 
 # ---------------main start------------------------
-
 pygame.init()
 screen = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("Path Finder")
 
-# parse map here
+# map parser
 parser = Parser()
-mapName = "Map1.txt"  # edit this manually to change map
+mapName = "Map1.txt"  # edit this manually here to change map
 
 # -------------game loop start---------------------
 running = True
