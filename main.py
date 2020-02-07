@@ -45,6 +45,47 @@ class GraphNode:
         self.y = y
         self.index = index
 
+class GraphEdge:
+    def __init__(self, iFrom, iTo, cost):
+        self.iFrom = iFrom
+        self.iTo = iTo
+        self.cost = cost
+
+class SparseGraph:
+    nodes = []
+    edges = []
+
+    def __init__(self, nextNodeIndex):
+        self.nextNodeIndex = 0
+        self.squareDistance = Graphics.squareSize + 1
+
+    def load(self, fileName):
+        file = open(fileName, "r+")
+
+        row = file.readline()
+        x = self.squareDistance/2
+        y = self.squareDistance/2
+        while row != "":
+            for symbol in row:
+                # create node
+                if symbol != "\n":
+                    node = GraphNode(x, y, self.nextNodeIndex)
+
+                    # add node to nodes
+                    self.nodes.append(node)
+                    self.edges.append([])
+
+                    x += self.squareDistance
+                    self.nextNodeIndex += 1
+            x = self.squareDistance/2
+            y += self.squareDistance
+            row = file.readline()
+
+        file.close()
+        file = open(fileName, "r+")
+
+        row = file.readline()
+
 
 # ---------------main start------------------------
 pygame.init()
@@ -54,6 +95,8 @@ pygame.display.set_caption("Path Finder")
 # map parser
 parser = Parser()
 mapName = "Map1.txt"  # edit this manually here to change map
+parseGraph = SparseGraph(0)
+parseGraph.load(mapName)
 
 # -------------game loop start---------------------
 running = True
