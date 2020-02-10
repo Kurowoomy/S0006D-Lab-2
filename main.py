@@ -19,6 +19,7 @@ class Graphics:
         else:
             pass
 
+
 class Parser:
     def __init__(self):
         self.squareDistance = Graphics.squareSize + 1
@@ -39,52 +40,84 @@ class Parser:
 
         file.close()
 
-class GraphNode:
-    def __init__(self, x, y, index):
-        self.x = x
-        self.y = y
-        self.index = index
-
-class GraphEdge:
-    def __init__(self, iFrom, iTo, cost):
-        self.iFrom = iFrom
-        self.iTo = iTo
-        self.cost = cost
 
 class SparseGraph:
-    nodes = []
-    edges = []
-
     def __init__(self, nextNodeIndex):
         self.nextNodeIndex = 0
-        self.squareDistance = Graphics.squareSize + 1
 
     def load(self, fileName):
+        graph = Graph()
         file = open(fileName, "r+")
 
         row = file.readline()
-        x = self.squareDistance/2
-        y = self.squareDistance/2
+        x = 0
+        y = 0
         while row != "":
             for symbol in row:
                 # create node
                 if symbol != "\n":
-                    node = GraphNode(x, y, self.nextNodeIndex)
-
                     # add node to nodes
-                    self.nodes.append(node)
-                    self.edges.append([])
+                    graph.nodes.append([x, y])
+                    if symbol == "X":
+                        graph.nonWalkables.append([x, y])
+                    elif symbol == "S":
+                        graph.startNode.append(x)
+                        graph.startNode.append(y)
+                    elif symbol == "G":
+                        graph.goalNode.append(x)
+                        graph.goalNode.append(y)
+                    graph.edges.append([])  # edge list for this node
 
-                    x += self.squareDistance
+                    x += 1
                     self.nextNodeIndex += 1
-            x = self.squareDistance/2
-            y += self.squareDistance
+            x = 0
+            y += 1
             row = file.readline()
 
         file.close()
-        file = open(fileName, "r+")
 
-        row = file.readline()
+        return graph
+
+class Graph:
+    nodes = []
+    edges = []
+    nonWalkables = []
+    startNode = []
+    goalNode = []
+
+    def __init__(self):
+        pass
+
+    def neighbours(self, node):
+        directions = [[-1, -1], [0, -1], [1, -1],
+                      [-1, 0], [1, 0],
+                      [-1, 1], [0, 1], [1, 1]]
+        corners = [[-1, -1], [1, -1],
+                   [-1, 1], [1, 1]]
+        result = []
+        for pos in directions:
+            neighbour = [node[0] + pos[0], node[1] + pos[1]]
+            if neighbour in self.nodes and neighbour not in self.nonWalkables:
+                if pos in corners and not self.cornerIsReachable(neighbour, node):
+                    pass
+                else:
+                    result.append(neighbour)  # add only walkable nodes to neighbours
+        return result
+
+    def cornerIsReachable(self, corner, node):
+        if corner[0] is node[0]-1 and corner[1] is node[1]-1:  # upper left
+            if [node[0], node[1] - 1] in self.nonWalkables or [node[0] - 1, node[1]] in self.nonWalkables:
+                return False
+        elif corner[0] is node[0]+1 and corner[1] is node[1]-1:  # upper right
+            if [node[0], node[1] - 1] in self.nonWalkables or [node[0] + 1, node[1]] in self.nonWalkables:
+                return False
+        elif corner[0] is node[0]-1 and corner[1] is node[1]+1:  # lower left
+            if [node[0], node[1] + 1] in self.nonWalkables or [node[0] - 1, node[1]] in self.nonWalkables:
+                return False
+        elif corner[0] is node[0]+1 and corner[1] is node[1]+1:  # lower right
+            if [node[0], node[1] + 1] in self.nonWalkables or [node[0] + 1, node[1]] in self.nonWalkables:
+                return False
+        return True
 
 
 # ---------------main start------------------------
@@ -92,11 +125,11 @@ pygame.init()
 screen = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("Path Finder")
 
-# map parser
+# map parsing
 parser = Parser()
-mapName = "Map1.txt"  # edit this manually here to change map
-parseGraph = SparseGraph(0)
-parseGraph.load(mapName)
+mapName = "Map1.txt"  # edit string manually here to change map
+graph = SparseGraph.load(SparseGraph(0), mapName)
+neighbours = graph.neighbours([2, 3])
 
 # -------------game loop start---------------------
 running = True
