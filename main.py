@@ -1,5 +1,6 @@
 import pygame
 import Algorithms
+import TimeMeasure
 
 
 class Graphics:
@@ -146,9 +147,12 @@ pygame.init()
 screen = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("Path Finder")
 
+# measure search time:
+# TimeMeasure.measureAlgorithmAndMap()
+
 # map parsing
 parser = Parser()
-mapName = "Map4.txt"  # edit string manually here to change map
+mapName = "Map1.txt"  # edit string manually here to change map
 graph = SparseGraph.load(SparseGraph(0), mapName)
 
 # algorithm
