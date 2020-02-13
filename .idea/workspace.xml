@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8abf5bea-a2da-4b4b-a414-5f72b3a54cf2" name="Default Changelist" comment="Klar med load-funktionen och skapandet av grafen/väggarna/edges(neighbours)">
-      <change afterPath="$PROJECT_DIR$/TimeMeasure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,10 +155,10 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="1103" height="358" key="GridCell.Tab.1.right/0.0.1920.1160@0.0.1920.1160" timestamp="1581531460776" />
-    <state x="461" y="223" width="1121" height="713" key="SettingsEditor" timestamp="1581621426379">
+    <state x="461" y="223" width="1121" height="713" key="SettingsEditor" timestamp="1581623507514">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="461" y="223" width="1121" height="713" key="SettingsEditor/0.0.1920.1160@0.0.1920.1160" timestamp="1581621426379" />
+    <state x="461" y="223" width="1121" height="713" key="SettingsEditor/0.0.1920.1160@0.0.1920.1160" timestamp="1581623507514" />
     <state x="655" y="405" key="com.intellij.ide.util.TipDialog" timestamp="1581621311951">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>

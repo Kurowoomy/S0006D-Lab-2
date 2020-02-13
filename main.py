@@ -1,6 +1,7 @@
 import pygame
 import Algorithms
 import TimeMeasure
+import torch
 
 
 class Graphics:
