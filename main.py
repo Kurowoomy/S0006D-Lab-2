@@ -2,6 +2,8 @@ import pygame
 import Algorithms
 import TimeMeasure
 import torch
+import torchvision
+from torchvision import transforms, datasets
 
 
 class Graphics:
@@ -39,7 +41,7 @@ class Parser:
                 Graphics.drawSquare(Graphics(), x, y, symbol, screen)
 
                 if symbol != "\n":  # to access the middle of a square via the position of a node
-                    self.nodePos[(posX, posY)] = [x + Graphics.squareSize/2, y + Graphics.squareSize/2]
+                    self.nodePos[(posX, posY)] = [x + Graphics.squareSize / 2, y + Graphics.squareSize / 2]
                     posX += 1
 
                 x += self.squareDistance
@@ -144,36 +146,40 @@ class Graph:
 
 
 # ---------------main start------------------------
-pygame.init()
-screen = pygame.display.set_mode((800, 800))
-pygame.display.set_caption("Path Finder")
 
-# measure search time:
-# TimeMeasure.measureAlgorithmAndMap()
+Algorithms.neuralNetwork()
 
-# map parsing
-parser = Parser()
-mapName = "Map1.txt"  # edit string manually here to change map
-graph = SparseGraph.load(SparseGraph(0), mapName)
 
-# algorithm
-path = Algorithms.AStar(graph, graph.startNode, graph.goalNode)  # change algorithm manually here
-route = Algorithms.getPath(graph.startNode, graph.goalNode, path)
+# pygame.init()
+# screen = pygame.display.set_mode((800, 800))
+# pygame.display.set_caption("Path Finder")
+#
+# # measure search time:
+# # TimeMeasure.measureAlgorithmAndMap()
+#
+# # map parsing
+# parser = Parser()
+# mapName = "Map1.txt"  # edit string manually here to change map
+# graph = SparseGraph.load(SparseGraph(0), mapName)
+#
+# # algorithm
+# path = Algorithms.AStar(graph, graph.startNode, graph.goalNode)  # change algorithm manually here
+# route = Algorithms.getPath(graph.startNode, graph.goalNode, path)
 
 # -------------game loop start---------------------
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    # drawing-------------------------
-    screen.fill((255, 255, 255))
-    parser.parse(mapName, screen)
-
-    # draw path
-    parser.drawVisited(path, screen)
-    parser.drawPath(route, graph.goalNode, screen)
-
-    pygame.display.update()
-    # --------------------------------
+# running = True
+# while running:
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             running = False
+#
+#     # drawing-------------------------
+#     screen.fill((255, 255, 255))
+#     parser.parse(mapName, screen)
+#
+#     # draw path
+#     parser.drawVisited(path, screen)
+#     parser.drawPath(route, graph.goalNode, screen)
+#
+#     pygame.display.update()
+# --------------------------------

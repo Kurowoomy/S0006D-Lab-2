@@ -2,6 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8abf5bea-a2da-4b4b-a414-5f72b3a54cf2" name="Default Changelist" comment="Klar med load-funktionen och skapandet av grafen/väggarna/edges(neighbours)">
+      <change afterPath="$PROJECT_DIR$/MNIST/processed/test.pt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MNIST/processed/training.pt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MNIST/raw/t10k-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MNIST/raw/t10k-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MNIST/raw/t10k-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MNIST/raw/t10k-labels-idx1-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MNIST/raw/train-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MNIST/raw/train-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MNIST/raw/train-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MNIST/raw/train-labels-idx1-ubyte.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,12 +56,12 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Program Files\Python38\python.exe" />
+      <option name="SDK_HOME" value="C:\Program Files\Python37\env\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\emmeli-8-local\Documents\S0006D_Datorspels_AI\S0006DLab2\main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -111,10 +123,10 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="679" y="199" key="#GraphParser/0.0.1920.1160@0.0.1920.1160" timestamp="1581010077203" />
-    <state x="414" y="236" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581010818579">
+    <state x="414" y="236" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581679899619">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="414" y="236" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1160@0.0.1920.1160" timestamp="1581010818579" />
+    <state x="414" y="236" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1160@0.0.1920.1160" timestamp="1581679899619" />
     <state x="891" y="215" key="CommitChangelistDialog2" timestamp="1581448403837">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
@@ -123,22 +135,22 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="740" y="336" key="FileChooserDialogImpl/0.0.1920.1160@0.0.1920.1160" timestamp="1581009703957" />
-    <state width="1103" height="255" key="GridCell.Tab.0.bottom" timestamp="1581621945050">
+    <state width="884" height="255" key="GridCell.Tab.0.bottom" timestamp="1581703985759">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1103" height="255" key="GridCell.Tab.0.bottom/0.0.1920.1160@0.0.1920.1160" timestamp="1581621945050" />
-    <state width="1103" height="255" key="GridCell.Tab.0.center" timestamp="1581621945050">
+    <state width="884" height="255" key="GridCell.Tab.0.bottom/0.0.1920.1160@0.0.1920.1160" timestamp="1581703985759" />
+    <state width="884" height="255" key="GridCell.Tab.0.center" timestamp="1581703985759">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1103" height="255" key="GridCell.Tab.0.center/0.0.1920.1160@0.0.1920.1160" timestamp="1581621945050" />
-    <state width="1103" height="255" key="GridCell.Tab.0.left" timestamp="1581621945050">
+    <state width="884" height="255" key="GridCell.Tab.0.center/0.0.1920.1160@0.0.1920.1160" timestamp="1581703985759" />
+    <state width="884" height="255" key="GridCell.Tab.0.left" timestamp="1581703985759">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1103" height="255" key="GridCell.Tab.0.left/0.0.1920.1160@0.0.1920.1160" timestamp="1581621945050" />
-    <state width="1103" height="255" key="GridCell.Tab.0.right" timestamp="1581621945050">
+    <state width="884" height="255" key="GridCell.Tab.0.left/0.0.1920.1160@0.0.1920.1160" timestamp="1581703985759" />
+    <state width="884" height="255" key="GridCell.Tab.0.right" timestamp="1581703985759">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1103" height="255" key="GridCell.Tab.0.right/0.0.1920.1160@0.0.1920.1160" timestamp="1581621945050" />
+    <state width="884" height="255" key="GridCell.Tab.0.right/0.0.1920.1160@0.0.1920.1160" timestamp="1581703985759" />
     <state width="1103" height="358" key="GridCell.Tab.1.bottom" timestamp="1581531460776">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
@@ -155,10 +167,10 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="1103" height="358" key="GridCell.Tab.1.right/0.0.1920.1160@0.0.1920.1160" timestamp="1581531460776" />
-    <state x="461" y="223" width="1121" height="713" key="SettingsEditor" timestamp="1581623507514">
+    <state x="461" y="223" width="1121" height="713" key="SettingsEditor" timestamp="1581679823214">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="461" y="223" width="1121" height="713" key="SettingsEditor/0.0.1920.1160@0.0.1920.1160" timestamp="1581623507514" />
+    <state x="461" y="223" width="1121" height="713" key="SettingsEditor/0.0.1920.1160@0.0.1920.1160" timestamp="1581679823214" />
     <state x="655" y="405" key="com.intellij.ide.util.TipDialog" timestamp="1581621311951">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
