@@ -6,40 +6,40 @@ def measureAlgorithmAndMap():
     
     
     class SparseGraph:
-    def __init__(self, nextNodeIndex):
-        self.nextNodeIndex = 0
-
-    def load(self, fileName):
-        graph = Graph()
-        file = open(fileName, "r+")
-
-        row = file.readline()
-        x = 0
-        y = 0
-        while row != "":
-            for symbol in row:
-                # create node
-                if symbol != "\\n":
-                    # add node to nodes
-                    graph.nodes.append([x, y])
-                    if symbol == "X":
-                        graph.nonWalkables.append([x, y])
-                    elif symbol == "S":
-                        graph.startNode.append(x)
-                        graph.startNode.append(y)
-                    elif symbol == "G":
-                        graph.goalNode.append(x)
-                        graph.goalNode.append(y)
-
-                    x += 1
-                    self.nextNodeIndex += 1
-            x = 0
-            y += 1
+        def __init__(self, nextNodeIndex):
+            self.nextNodeIndex = 0
+    
+        def load(self, fileName):
+            graph = Graph()
+            file = open(fileName, "r+")
+    
             row = file.readline()
-
-        file.close()
-
-        return graph
+            x = 0
+            y = 0
+            while row != "":
+                for symbol in row:
+                    # create node
+                    if symbol != "\\n":
+                        # add node to nodes
+                        graph.nodes.append([x, y])
+                        if symbol == "X":
+                            graph.nonWalkables.append([x, y])
+                        elif symbol == "S":
+                            graph.startNode.append(x)
+                            graph.startNode.append(y)
+                        elif symbol == "G":
+                            graph.goalNode.append(x)
+                            graph.goalNode.append(y)
+    
+                        x += 1
+                        self.nextNodeIndex += 1
+                x = 0
+                y += 1
+                row = file.readline()
+    
+            file.close()
+    
+            return graph
     
     
     class Graph:

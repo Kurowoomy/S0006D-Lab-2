@@ -163,8 +163,10 @@ Algorithms.neuralNetwork()
 # graph = SparseGraph.load(SparseGraph(0), mapName)
 #
 # # algorithm
-# path = Algorithms.AStar(graph, graph.startNode, graph.goalNode)  # change algorithm manually here
+# path, distance = Algorithms.AStar(graph, graph.startNode, graph.goalNode)  # change algorithm manually here
+# print(distance)
 # route = Algorithms.getPath(graph.startNode, graph.goalNode, path)
+
 
 # -------------game loop start---------------------
 # running = True
