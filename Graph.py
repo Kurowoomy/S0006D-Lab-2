@@ -1,3 +1,4 @@
+# separate file for making and storing the Graph. Used in Algorithms.py
 
 
 class SparseGraph:

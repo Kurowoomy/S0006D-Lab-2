@@ -88,7 +88,7 @@ def measureAlgorithmAndMap():
     graph = SparseGraph.load(SparseGraph(0), mapName)
     '''
     myCode = '''
-    path = Algorithms.AStar(graph, graph.startNode, graph.goalNode)  # change algorithm manually here
+    path = Algorithms.AStar2(graph, graph.startNode, graph.goalNode, 218)  # change algorithm manually here
     route = Algorithms.getPath(graph.startNode, graph.goalNode, path)
     '''
     num = 10000

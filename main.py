@@ -1,9 +1,7 @@
 import pygame
 import Algorithms
-import TimeMeasure
-import torch
-import torchvision
-from torchvision import transforms, datasets
+# import TimeMeasure
+import time
 
 
 class Graphics:
@@ -68,8 +66,9 @@ class Parser:
 
 class SparseGraph:
     def __init__(self, nextNodeIndex):
-        self.nextNodeIndex = 0
+        self.nextNodeIndex = 0  # not used
 
+    # reads the X, 0, S, G in a txt-file and returns a Graph
     def load(self, fileName):
         graph = Graph()
         file = open(fileName, "r+")
@@ -79,7 +78,6 @@ class SparseGraph:
         y = 0
         while row != "":
             for symbol in row:
-                # create node
                 if symbol != "\n":
                     # add node to nodes
                     graph.nodes.append([x, y])
@@ -112,6 +110,7 @@ class Graph:
     def __init__(self):
         pass
 
+    # returns all walkable nodes as a list of [x, y]
     def neighbours(self, node):
         directions = [[-1, -1], [0, -1], [1, -1],
                       [-1, 0], [1, 0],
@@ -129,6 +128,7 @@ class Graph:
 
         return result
 
+    # can't pass corners diagonally
     def cornerIsReachable(self, corner, node):
         if corner[0] is node[0] - 1 and corner[1] is node[1] - 1:  # upper left
             if [node[0], node[1] - 1] in self.nonWalkables or [node[0] - 1, node[1]] in self.nonWalkables:
@@ -147,41 +147,54 @@ class Graph:
 
 # ---------------main start------------------------
 
-Algorithms.neuralNetwork()
+# Algorithms.neuralNetwork()
 
 
-# pygame.init()
-# screen = pygame.display.set_mode((800, 800))
-# pygame.display.set_caption("Path Finder")
-#
-# # measure search time:
-# # TimeMeasure.measureAlgorithmAndMap()
-#
-# # map parsing
-# parser = Parser()
-# mapName = "Map1.txt"  # edit string manually here to change map
-# graph = SparseGraph.load(SparseGraph(0), mapName)
-#
-# # algorithm
-# path, distance = Algorithms.AStar(graph, graph.startNode, graph.goalNode)  # change algorithm manually here
-# print(distance)
-# route = Algorithms.getPath(graph.startNode, graph.goalNode, path)
+pygame.init()
+screen = pygame.display.set_mode((800, 800))
+pygame.display.set_caption("Path Finder")
 
+# measure search time with timeit:
+# TimeMeasure.measureAlgorithmAndMap() #broken at the moment
+
+# map parsing
+parser = Parser()
+mapName = "Map1.txt"  # edit string manually here to change map
+graph = SparseGraph.load(SparseGraph(0), mapName)
+
+# algorithm
+result = []
+loops = 1  # set loops to 1 for doing the algorithm only once before showing the path
+for i in range(loops):  # a loop for measuring time
+    start = time.perf_counter()
+    path, distance = Algorithms.AStar(graph, graph.startNode, graph.goalNode)  # change algorithm manually here
+    print(distance)
+    # A* when knowing the distance (Neural Network):
+    # path = Algorithms.AStar2(graph, graph.startNode, graph.goalNode, 218)  # remember to change cost
+    route = Algorithms.getPath(graph.startNode, graph.goalNode, path)
+    end = time.perf_counter()
+    result.append(end - start)
+
+
+results = 0
+for i in range(loops):  # time results after the loop
+    results = results + result[i]
+print(results/loops)
 
 # -------------game loop start---------------------
-# running = True
-# while running:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             running = False
-#
-#     # drawing-------------------------
-#     screen.fill((255, 255, 255))
-#     parser.parse(mapName, screen)
-#
-#     # draw path
-#     parser.drawVisited(path, screen)
-#     parser.drawPath(route, graph.goalNode, screen)
-#
-#     pygame.display.update()
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # drawing-------------------------
+    screen.fill((255, 255, 255))
+    parser.parse(mapName, screen)
+
+    # draw path
+    parser.drawVisited(path, screen)
+    parser.drawPath(route, graph.goalNode, screen)
+
+    pygame.display.update()
 # --------------------------------
